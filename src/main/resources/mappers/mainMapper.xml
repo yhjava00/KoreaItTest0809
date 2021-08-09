@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main">
+
+	<select id="selectMember" parameterType="java.lang.String" resultType="com.spring.korea.dto.MemberDTO">
+		select * from member where id = #{id}
+	</select>
+	
+	<insert id="insertMember" parameterType="com.spring.korea.dto.MemberDTO">
+		insert into member values(#{id}, #{pw}, #{name}, 10000)
+	</insert>
+
+	<select id="selectMemberList" resultType="com.spring.korea.dto.MemberDTO">
+		select * from member
+	</select>
+	
+	<update id="updatePointMinus" parameterType="java.util.Map">
+		update member set point = point - #{point} where id = #{id}
+	</update>
+	
+	<update id="updatePointPlus" parameterType="java.lang.String">
+		update member set point = point + 1000 where id = #{id}
+	</update>
+	
+	<update id="updateOnePoint">
+		update member set point = point + 1
+	</update>
+
+</mapper>
